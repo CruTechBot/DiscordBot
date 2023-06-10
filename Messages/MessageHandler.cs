@@ -1,4 +1,5 @@
-﻿using Discord_Bot.Utilities;
+﻿using Discord_Bot.DataModels;
+using Discord_Bot.Utilities;
 
 namespace Discord_Bot.Messages
 {
@@ -6,9 +7,11 @@ namespace Discord_Bot.Messages
     {
         private ulong _self;
         private readonly Logger _logger;
-        public MessageHandler(Logger logger)
+        private readonly DatabaseContext _database;
+        public MessageHandler(Logger logger, DatabaseContext database)
         {
             _logger = logger;
+            _database = database;
         }
 
         public void SetSelf(ulong self)
@@ -23,7 +26,13 @@ namespace Discord_Bot.Messages
 
         public void PrivateMessageHandler(IMessage message)
         {
-            message.Reply("Hi " + message.AuthorName);
+            if (!_database.Users.Any(u => u.Id == message.AuthorId))
+            {
+                _database.Users.Add(new UserItem { Id = message.AuthorId, Name = message.AuthorName });
+            }
+
+            _database.Messages.Add(new MessageItem { UserId = message.AuthorId, Content = message.Content });
+            _database.SaveChanges();
         }
 
         public void ChannelMessageHandler(IMessage message)
@@ -31,7 +40,7 @@ namespace Discord_Bot.Messages
             if (message.UsersMentioned.ContainsKey(_self))
             {
                 message.Reply("Wazzzzzzz uuuuuuuuup");
-            }
+            } 
         }
     }
 }

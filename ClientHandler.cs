@@ -1,5 +1,6 @@
 ﻿using Discord;
 using Discord.WebSocket;
+using Discord_Bot.DataModels;
 using Discord_Bot.Messages;
 using Discord_Bot.Utilities;
 
@@ -11,11 +12,13 @@ namespace Discord_Bot
         private readonly string _token;
         private readonly Logger _logger;
         private readonly MessageHandler _messageHandler;
+        private readonly DatabaseContext _database;
 
-        public ClientHandler(string token)
+        public ClientHandler(string token, DatabaseContext database)
         {
+            _database = database;
             _logger = new Logger();
-            _messageHandler = new MessageHandler(_logger);
+            _messageHandler = new MessageHandler(_logger, _database);
 
             var config = new DiscordSocketConfig
             {
