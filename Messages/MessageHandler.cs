@@ -31,7 +31,7 @@ namespace Discord_Bot.Messages
                 _database.Users.Add(new UserItem { Id = message.AuthorId, Name = message.AuthorName });
             }
 
-            _database.Messages.Add(new MessageItem { UserId = message.AuthorId, Content = message.Content });
+            _database.Messages.Add(new MessageItem { UserId = message.AuthorId, Content = message.Content, SentTime = DateTime.UtcNow });
             _database.SaveChanges();
         }
 
