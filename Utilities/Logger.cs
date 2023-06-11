@@ -1,5 +1,4 @@
-﻿using Discord;
-
+﻿
 namespace Discord_Bot.Utilities
 {
     internal class Logger
@@ -30,11 +29,6 @@ namespace Discord_Bot.Utilities
         {
             _streamWriter.WriteLine($"{Time()}: Run finished");
             _streamWriter.Close();
-        }
-
-        public void Log(LogMessage msg)
-        {
-            Log(msg.ToString());
         }
 
         public void Log(String msg)
