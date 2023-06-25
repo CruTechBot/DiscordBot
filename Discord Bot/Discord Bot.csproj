@@ -19,7 +19,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Servers\" />
+    <ProjectReference Include="..\Discord\Discord.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="configs.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
     
 </Project>
