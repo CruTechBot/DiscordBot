@@ -7,13 +7,13 @@ namespace Discord_Data.DataModels
     {
         /*
 
-        To automatically migrate content int the Pachage Manager Console enter
+        To automatically migrate content in the Teminal of this Discord Data folder enter
 
-        add-migration {{Migration Name}}
+        dotnet ef migrations add {{Migration Name}}
 
         then
 
-        Update-Database
+        dotnet ef database update
 
         */
 
