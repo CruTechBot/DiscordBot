@@ -13,11 +13,11 @@ namespace IDiscord.Handlers
         private readonly DatabaseContext _database;
 
         public ClientHandler(string token, 
-            List<Func<IDiscordClient, ILogger, DatabaseContext, IMessageCommand>> botCommands = null,
-            List<Func<IDiscordClient, ILogger, DatabaseContext, IMessageCommand>> privateCommands = null,
-            List<Func<IDiscordClient, ILogger, DatabaseContext, IMessageCommand>> publicCommands = null,
-            List<Func<IDiscordClient, ILogger, DatabaseContext, IReactionCommand>> privateReactionCommands = null,
-            List<Func<IDiscordClient, ILogger, DatabaseContext, IReactionCommand>> publicReactionCommands = null)
+            List<Func<IDiscordClient, ILogger, DatabaseContext, IMessageCommand>>? botCommands = null,
+            List<Func<IDiscordClient, ILogger, DatabaseContext, IMessageCommand>>? privateCommands = null,
+            List<Func<IDiscordClient, ILogger, DatabaseContext, IMessageCommand>>? publicCommands = null,
+            List<Func<IDiscordClient, ILogger, DatabaseContext, IReactionCommand>>? privateReactionCommands = null,
+            List<Func<IDiscordClient, ILogger, DatabaseContext, IReactionCommand>>? publicReactionCommands = null)
         {
             _database = new DatabaseContext();
             _logger = new Logger();

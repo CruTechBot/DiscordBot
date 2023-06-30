@@ -12,7 +12,7 @@ namespace IDiscord.Handlers
         private readonly IEnumerable<IReactionCommand>? _privateCommands;
         private readonly IEnumerable<IReactionCommand>? _publicCommands;
 
-        public ReactionHandler(IDiscordClient client, Logger logger, DatabaseContext database, List<Func<IDiscordClient, ILogger, DatabaseContext, IReactionCommand>> privateCommands, List<Func<IDiscordClient, ILogger, DatabaseContext, IReactionCommand>> publicCommands)
+        public ReactionHandler(IDiscordClient client, Logger logger, DatabaseContext database, List<Func<IDiscordClient, ILogger, DatabaseContext, IReactionCommand>>? privateCommands, List<Func<IDiscordClient, ILogger, DatabaseContext, IReactionCommand>>? publicCommands)
         {
             _client = client;
             _logger = logger;
